@@ -1,0 +1,27 @@
+<form action="updateRecordCommercial/{{ commercial.id }}" method="post" class="was-validated">
+  {% csrf_token %}
+  <div class="form-group">
+      <label>ID</label>
+      <input class="form-control" id="id" type="text" name="commercial" value="{{commercial.id}}" disabled>
+  </div>
+  <div class="form-group">
+      <label>First Text</label>
+      <input class="form-control" id="first_text" type="text" placeholder="Enter first text" name="commercial" value="{{commercial.first_text}}" required>
+      <div class="valid-feedback">Valid.</div>
+      <div class="invalid-feedback">Please fill out this field.</div>
+  </div>
+  <div class="form-group">
+      <label>Second Text</label>
+      <input class="form-control" id="second_text" type="text" placeholder="Enter second text" name="commercial" value="{{commercial.second_text}}" required>
+      <div class="valid-feedback">Valid.</div>
+    <div class="invalid-feedback">Please fill out this field.</div>
+  </div>
+  <div class="form-group">
+      <label>Thirst Text</label>
+      <input class="form-control" id="thirst_text" type="text" placeholder="Enter thirst text" name="commercial" value="{{commercial.thirst_text}}" required>
+      <div class="valid-feedback">Valid.</div>
+      <div class="invalid-feedback">Please fill out this field.</div>
+  </div>
+  <a href="../" class="btn btn-primary" role="button">Back</a>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>

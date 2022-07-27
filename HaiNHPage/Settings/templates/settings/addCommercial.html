@@ -1,22 +1,23 @@
-<form action="addCommercial/" method="post" class="was-validated">
+<form action="addRecordCommercial/" method="post" class="was-validated">
   {% csrf_token %}
   <div class="form-group">
       <label>First Text:</label>
-      <input class="form-control" id="first_text" type="text" placeholder="Enter first text" name="first_text" required>
+      <input class="form-control" id="first_text" type="text" placeholder="Enter first text" name="commercial" required>
       <div class="valid-feedback">Valid.</div>
       <div class="invalid-feedback">Please fill out this field.</div>
   </div>
   <div class="form-group">
       <label>Second Text:</label>
-      <input class="form-control" id="second_text" type="text" placeholder="Enter second text" name="first_text" required>
+      <input class="form-control" id="second_text" type="text" placeholder="Enter second text" name="commercial" required>
       <div class="valid-feedback">Valid.</div>
     <div class="invalid-feedback">Please fill out this field.</div>
   </div>
   <div class="form-group">
       <label>Thirst Text:</label>
-      <input class="form-control" id="thirst_text" type="text" placeholder="Enter thirst text" name="thirst_text" required>
+      <input class="form-control" id="thirst_text" type="text" placeholder="Enter thirst text" name="commercial" required>
       <div class="valid-feedback">Valid.</div>
       <div class="invalid-feedback">Please fill out this field.</div>
   </div>
+  <a href="../" class="btn btn-primary" role="button">Back</a>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>

@@ -1,23 +1,34 @@
+{% load bootstrap_icons %}
 <div class="container">
 <table class="table table-hover">
     <thead>
       <tr>
-        <th>First Text</th>
+        <th>ID</th>
         <th>First Text</th>
         <th>Second Text</th>
         <th>Thirst Text</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
     {% for i in commercials %}
       <tr>
-        <td>i.id</td>
-        <td>i.first_text</td>
-        <td>i.second_text</td>
-        <td>i.thirst_text</td>
+        <td>{{ i.id }}</td>
+        <td>{{ i.first_text }}</td>
+        <td>{{ i.second_text }}</td>
+        <td>{{ i.thirst_text }}</td>
+        <td>
+            <ul class="list-inline m-0">
+               <li class="list-inline-item">
+                   <a href="updateCommercial/{{ i.id }}">{% bs_icon 'pencil-square' %}</a>
+               </li>
+               <li class="list-inline-item">
+                   <a href="deleteCommercial/{{ i.id }}">{% bs_icon 'trash' %}</i></a>
+               </li>
+            </ul></td>
       </tr>
     {% endfor %}
     </tbody>
   </table>
-  <a href="addCommercial/" class="btn btn-info" role="button">Link Button</a>
+  <a href="addCommercial/" class="btn btn-info" role="button">Add Commercial</a>
 </div>
