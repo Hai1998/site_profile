@@ -6,4 +6,5 @@ class Commercials(models.Model):
     first_text = models.CharField(max_length=15)
     second_text = models.CharField(max_length=50)
     thirst_text = models.CharField(max_length=50)
-    commercials_image = models.ImageField(null=True, blank=True, upload_to='images/')
+    image_name = models.CharField(max_length=100)
+    commercials_image = models.ImageField(upload_to='images/')

@@ -1,5 +1,6 @@
 from django.shortcuts import loader
 from django.template import Template, loader
+from django.core.files.storage import FileSystemStorage
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import Commercials
 from django.urls import reverse
@@ -23,7 +24,11 @@ def addCommercial(request):
 
 def addRecordCommercial(request):
     data = request.POST.getlist('commercial')
-    commercial = Commercials(first_text=data[0], second_text=data[1], thirst_text=data[2])
+    image = request.FILES.get('file_image')
+    fss = FileSystemStorage()
+    file = fss.save(image.name, image)
+    file_url = fss.url(file)
+    commercial = Commercials(first_text=data[0], second_text=data[1], thirst_text=data[2], image_name=image.name, commercials_image=file_url)
     commercial.save()
     return HttpResponseRedirect(reverse('settings'))
 
@@ -40,11 +45,16 @@ def updateCommercial(request, id):
 
 def updateRecordCommercial(request, id):
     data = request.POST.getlist('commercial')
-    print(data)
+    image = request.FILES.get('file_image')
+    fss = FileSystemStorage()
+    file = fss.save( image.name, image )
+    file_url = fss.url(file)
     commercial = Commercials.objects.get(id=id)
     commercial.first_text = data[0]
     commercial.second_text = data[1]
     commercial.thirst_text = data[2]
+    commercial.image_name = image.name
+    commercial.commercials_image = file_url
     commercial.save()
     return HttpResponseRedirect(reverse('settings'))
 
