@@ -4,6 +4,8 @@ from django.core.files.storage import FileSystemStorage
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import Commercials
 from django.urls import reverse
+import os
+
 
 
 # Create your views here.
@@ -61,5 +63,7 @@ def updateRecordCommercial(request, id):
 
 def deleteCommercial(request, id):
     commercial = Commercials.objects.get(id=id)
+    image_url = commercial.commercials_image
     commercial.delete()
+    # os.remove(image_url)
     return HttpResponseRedirect(reverse('settings'))
